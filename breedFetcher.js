@@ -3,9 +3,9 @@ const request = require('request');
 
 
 const fetchBreedDescription = function(breedName, callback) {
-  // if (!breedName) {
-  //   return console.log('Invalid breed name');
-  // }
+  if (!breedName) {
+    return callback('Invalid breed name');
+  } 
 
   request(`https://api.thecatapi.com/v1/breeds/search?q=${breedName}`, (error, _response, body) => {
     if (error) {
@@ -17,10 +17,8 @@ const fetchBreedDescription = function(breedName, callback) {
     
     if (breed) {
       return callback(null, breed.description); //console.log('Breed not found');
-    } else if (!breedName) {
-        return callback('breed not found');
     } else {
-      return callback('Invalid breed name')
+      return callback('breed not found')
     }
   });
 };
