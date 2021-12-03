@@ -19,7 +19,7 @@ describe('fetchBreedDescription', () => {
   it('returns an error for an invalid breed, via callback', (done) => {
     fetchBreedDescription('sdg', (err, desc) => {
       // we expect an error for this scenario
-      assert.equal(err, "Invalid breed name");
+      assert.equal(err, "breed not found");
       
       done();
     });
@@ -27,7 +27,7 @@ describe('fetchBreedDescription', () => {
 
   //Add another test (it) here which should test the scenario where an invalid/non-existent breed is passed in.
   it('returns an error for an invalid breed, via callback', (done) => {
-    fetchBreedDescription(' ', (err, desc) => {
+    fetchBreedDescription("", (err, desc) => {
       // we expect an error for this scenario
       assert.equal(err, "Invalid breed name");
       
